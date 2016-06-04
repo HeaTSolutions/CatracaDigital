@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+    <title>CatracaDigital</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicativo para marcação de ponto em empresas">
+    <meta name="author" content="Henrique Nogueira">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll">
+<!-- ******HEADER****** -->
+<header id="top" class="header navbar-fixed-top">
+    <div class="container">
+        <h1 class="logo pull-left">
+            <a class="scrollto" href="{% url 'landing:index' %}">
+                <img id="logo-image" class="logo-image" src="{% static 'images/catraca_icon.svg' %}" alt="Logo">
+                <span class="logo-title">Catraca<b>Digital</b></span>
+                <div class="logo-subtitle">solução de ponto</div>
+            </a>
+        </h1><!--//logo-->
+    </div>
+</header><!--//header-->
+
+{% if form.non_field_errors %}
+    <section class="section">
+        <div class="container">
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Erro!</strong> {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+<!-- ******Login****** -->
+<section id="login" class="section">
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="title">Login</h1>
+        </div><!--//row-->
+        <div class="row text-center">
+            <div class="contact-form col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+                <form class="form" method="post" action="{% url 'core:login' %}">
+                    {% csrf_token %}
+                    <div class="form-group name">
+                        <label class="sr-only" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                        <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" type="text"
+                               class="form-control" placeholder="Nome de usuário">
+                    </div><!--//form-group-->
+                    <div class="form-group email">
+                        <label class="sr-only" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                        <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}"
+                               type="password" class="form-control" placeholder="Senha">
+                    </div><!--//form-group-->
+                    <button type="submit" class="btn btn-lg btn-theme">Entrar</button>
+                </form><!--//form-->
+            </div><!--//contact-form-->
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//contact-->
+
+{% include 'footer.html' %}
+
+<!-- Javascript -->
+<script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!--[if !IE]>-->
+<script type="text/javascript" src="{% static 'landing/js/animations.js' %}"></script>
+<!--<![endif]-->
+</body>
+</html>
+

@@ -1,0 +1,451 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+    <title>CatracaDigital</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicativo para marcação de ponto em empresas">
+    <meta name="author" content="Henrique Nogueira">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/flexslider/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/animate.css/animate.min.css' %}">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll">
+<!-- ******HEADER****** -->
+<header id="top" class="header navbar-fixed-top">
+    <div class="container">
+        <h1 class="logo pull-left">
+            <a class="scrollto" href="#promo">
+                <img id="logo-image" class="logo-image" src="{% static 'images/catraca_icon.svg' %}" alt="Logo">
+                <span class="logo-title">Catraca<b>Digital</b></span>
+                <div class="logo-subtitle">solução de ponto</div>
+            </a>
+        </h1><!--//logo-->
+        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button><!--//nav-toggle-->
+            </div><!--//navbar-header-->
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#features">Sobre</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#how">Como funciona</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#pricing">Planos</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#contact">Contato</a></li>
+                    <li class="nav-item last"><a href="{% url 'core:login' %}">Login</a></li>
+                </ul><!--//nav-->
+            </div><!--//navabr-collapse-->
+        </nav><!--//main-nav-->
+    </div>
+</header><!--//header-->
+
+<!-- ******PROMO****** -->
+<section id="promo" class="promo section offset-header has-pattern">
+    <div class="container">
+        <div class="row">
+            <div class="overview col-md-8 col-sm-12 col-xs-12">
+                <h2 class="title">A melhor forma de bater o ponto é com o <b>CatracaDigital</b></h2>
+                <ul class="summary">
+                    <li>Gestão centralizada de entrada e saída dos funcionários</li>
+                    <li>Interface de gestão simples e intuitiva</li>
+                    <li>Acompanhamento detalhado do plano de horas</li>
+                    <li>Analytics sobre comportamento e satisfação dos funcionários</li>
+                </ul>
+                <div class="download-area">
+                    <ul class="btn-group list-inline">
+                        <li class="ios-btn"><a href="#">Baixe agora na App Store</a></li>
+                        <li class="android-btn"><a href="#">Baixe agora na Google Play</a></li>
+                    </ul>
+                    <div class="note text-center">
+                        <p>Versão para teste<br/>até 12 funcionários</p>
+                        <span class="left-arrow"></span>
+                        <span class="right-arrow"></span>
+                    </div><!--//note-->
+                </div>
+            </div><!--//overview-->
+
+            <!--// iPhone starts -->
+            <div class="phone android col-md-4 col-sm-12 col-xs-12">
+                <div class="android-holder phone-holder">
+                    <div class="android-holder-inner">
+                        <div class="slider flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="{% static 'landing/images/android-slide-1.png' %}" alt=""/>
+                                </li>
+                                <li>
+                                    <img src="{% static 'landing/images/android-slide-2.png' %}" alt=""/>
+                                </li>
+                                <li>
+                                    <img src="{% static 'landing/images/android-slide-3.png' %}" alt=""/>
+                                </li>
+                            </ul><!--//slides-->
+                        </div><!--//flexslider-->
+                    </div><!--//phone-holder-inner-->
+                </div><!--//iphone-holder-->
+            </div><!--//iphone-->
+            <!--// iPhone ends -->
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//promo-->
+
+<!-- ******FEATURES****** -->
+<section id="features" class="features section">
+    <div class="container">
+        <div class="row">
+            <h2 class="title text-center">O que torna esta solução espetacular
+                <div class="feature-subtitle">A revolução na forma de marcar e gerenciar os pontos dos funcionários
+                </div>
+            </h2>
+
+            <!--<h2 class="title text-center sr-only">Features</h2>-->
+            <div class="item col-md-4 col-sm-12 col-xs-12 text-center">
+                <div class="icon">
+                    <i class="fa fa-money"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Baixo custo</h3>
+                    <p>Não perca tempo/dinheiro com maquinários, manutenções e treinamentos.</p>
+                </div><!--//content-->
+                <div class="icon">
+                    <i class="fa fa-recycle"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Sustentável</h3>
+                    <p>Acabe com a necessidade de ter tabelas impressas, economizando papel.</p>
+                </div><!--//content-->
+                <div class="icon">
+                    <i class="fa fa-users"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Responsabilidade distribuída</h3>
+                    <p>Dê ao funcionário a autonomia de marcar e ajustar seus pontos ou anexar justificativas.</p>
+                </div><!--//content-->
+            </div><!--//column-->
+            <div class="phone ipad ipad-white col-md-4 col-sm-12 col-xs-12">
+                <div class="ipad-holder">
+                    <div class="ipad-holder-inner">
+                        <div id="video-features"
+                             class="video-features col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                            <iframe src="https://www.youtube.com/embed/u-8C_x-A0u4" width="320" height="428"
+                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div><!--//video-->
+                    </div><!--//iphone-holder-inner-->
+                </div><!--//iphone-holder-->
+            </div><!--//iphone-->
+            <div class="item col-md-4 col-sm-12 col-xs-12 text-center">
+                <div class="icon">
+                    <i class="fa fa-thumbs-o-up"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Prestativo</h3>
+                    <p>Lembretes ajudarão o funcionário a marcar o ponto na hora certa .</p>
+                </div><!--//content-->
+                <div class="icon">
+                    <i class="fa fa-flash"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Ágil</h3>
+                    <p>Imaginge poder fechar o dia em meio a um último atendimento sem precisar sair do lugar.</p>
+                </div><!--//content-->
+                <div class="icon">
+                    <i class="fa fa-cloud"></i>
+                </div><!--//icon-->
+                <div class="content">
+                    <h3 class="title">Remoto</h3>
+                    <p>A ferramente perfeita para trabalhos remotos como consultorias, etc.</p>
+                </div><!--//content-->
+            </div><!--//column-->
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//features-->
+
+<!-- ******HOW****** -->
+<section id="how" class="how section has-pattern">
+    <div class="container">
+        <div class="row">
+            <h2 class="title text-center">Passo a passo</h2>
+            <ul class="timeline">
+                <li class="on-left">
+                    <div class="icon">
+                        <i class="fa fa-download"></i>
+                    </div><!--//icon-->
+                    <time class="event-mark">
+                        <span class="device"><b>Mobile</b> Interface</span>
+                    </time>
+						<span class="event-icon event-icon-success">
+							<i class="fa fa-mobile" style="vertical-align: top; margin-top: 17%;"></i>
+						</span>
+                    <section class="event">
+                        <h4 class="event-heading">Download + Id celular</h4>
+                        <p class="fs-sm text-muted">O funcionário baixa o app da loja e ao abri-lo verá o ID do seu
+                            celular.</p>
+                    </section>
+                </li>
+
+                <li class="on-right">
+                    <div class="icon">
+                        <i class="fa fa-user-plus"></i>
+                    </div><!--//icon-->
+                    <time class="event-mark">
+                        <span class="device"><b>Web</b> Interface</span>
+                    </time>
+						<span class="event-icon event-icon-success">
+							<i class="fa fa-desktop" style="vertical-align: top; margin-top: 28%; font-size: 10px"></i>
+						</span>
+                    <section class="event">
+                        <h4 class="event-heading">Cadastro da empresa + Registro de funcionários</h4>
+                        <p class="fs-sm text-muted">Ao acessar o portal da solução a empresa deve se cadastrar e
+                            posteriormente adicionar os funcionários com os respectivos IDs dos celulares.</p>
+                    </section>
+                </li>
+                <li class="on-left">
+                    <div class="icon">
+                        <i class="fa fa-check"></i>
+                    </div><!--//icon-->
+                    <time class="event-mark">
+                        <span class="device"><b>Mobile</b> Interface</span>
+                    </time>
+						<span class="event-icon event-icon-success">
+							<i class="fa fa-mobile" style="vertical-align: top; margin-top: 17%;"></i>
+						</span>
+                    <section class="event">
+                        <h4 class="event-heading">Marcar o ponto</h4>
+                        <p class="fs-sm text-muted">Pronto! O funcionário cadastrado já pode marcar seus pontos nos
+                            momentos adequados.</p>
+                    </section>
+                </li>
+
+                <li class="on-right">
+                    <div class="icon">
+                        <i class="fa fa-bar-chart"></i>
+                    </div><!--//icon-->
+                    <time class="event-mark">
+                        <span class="device"><b>Web</b> Interface</span>
+                    </time>
+						<span class="event-icon event-icon-success">
+							<i class="fa fa-desktop" style="vertical-align: top; margin-top: 28%; font-size: 10px"></i>
+						</span>
+                    <section class="event">
+                        <h4 class="event-heading">Monitoramento</h4>
+                        <p class="fs-sm text-muted">No portal, o RH ou Gestor poderá acompanhar os pontos, fazer ajustes
+                            ou configurações e extrair relatórios</p>
+                    </section>
+                </li>
+            </ul>
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//how-->
+
+<!-- ******FAQ****** -->
+<section id="faq" class="faq section">
+    <div class="container">
+        <div class="row">
+            <h2 class="title text-center">Perguntas frequentes</h2>
+            <div class="faq-col col-md-6 col-sm-6 col-xs-12">
+                <div class="item">
+                    <h3 class="question"><i class="fa fa-question-circle"></i>Como garantir que os funcionários irão
+                        bater o ponto no trabalho?</h3>
+                    <p class="answer">O aplicativo captura a localização do smartphone do funcionário no momento em que
+                        ele marca o ponto e é feito uma checagem com o local de trabalho, podendo gerar alertas.</p>
+                </div><!--//item-->
+                <div class="item">
+                    <h3 class="question"><i class="fa fa-question-circle"></i>O que acontece se o funcionário não
+                        estiver com o celular?</h3>
+                    <p class="answer">Existem 2 opções. 1) O gestor pode entrar no portal e fazer a marcação pelo
+                        funcionário ou 2) a empresa pode optar por ter um ipad central onde qualquer funcionário poderá
+                        fazê-lo.</p>
+                </div><!--//item-->
+            </div><!--//faq-col-->
+            <div class="faq-col col-md-6 col-sm-6 col-xs-12">
+                <div class="item">
+                    <h3 class="question"><i class="fa fa-question-circle"></i>Só funciona com acesso à internet?</h3>
+                    <p class="answer">Por enquanto sim, mas já estamos trabalhando para tornar possível marcações
+                        off-line.</p>
+                </div><!--//item-->
+                <div class="item">
+                    <h3 class="question"><i class="fa fa-question-circle"></i>O que acontece em caso de marcações
+                        indevidas?</h3>
+                    <p class="answer">Existem 2 opções. 1) O próprio funcionário poderá deletar uma marcação feita (com
+                        uma justificativa) ou fazer uma marcação com dalay de 2 horas (no máximo), ou 2) a empresa será
+                        capaz de fazer ajustes manuais (com justificativas) através do portal.</p>
+                </div><!--//item-->
+            </div><!--//faq-col-->
+        </div><!--//row-->
+        <div class="more text-center">
+            <h4 class="title">Mais dúvidas?</h4>
+            <a class="btn btn-lg btn-theme scrollto" href="#contact">Entre em contato<i
+                    class="fa fa-arrow-circle-o-down"></i></a>
+        </div>
+    </div><!--//container-->
+</section><!--//faq-->
+
+<!-- ******Pricing****** -->
+<section id="pricing" class="pricing section has-pattern">
+    <div class="container">
+        <div class="price-cols row">
+            <h2 class="title text-center">Escolha o seu plano hoje mesmo</h2>
+            <div class="items-wrapper col-md-10 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+
+                {% for plan in plans %}
+                    <div class="item price-1 col-md-3 col-sm-3 col-xs-12 text-center {% if plan.is_popular %}best-buy{% endif %}">
+                        <div class="item-inner">
+                            <div class="heading">
+                                <h3 class="title">{{ plan.name }}</h3>
+                                <h3 class="subtitle">({{ plan.headline }})</h3>
+                                <p class="price-figure">
+                                    <span class="price-figure-inner">
+                                        {% if plan.show_currency %}
+                                            <span class="currency">R$</span>
+                                        {% endif %}
+                                        <span class="number">{{ plan.display_price }}</span><br/>
+                                        <span class="unit">{{ plan.display_period }}</span>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled feature-list">
+                                    <li>
+                                        <i class="fa fa-check"></i>
+                                        {% if not plan.unlimited_users %}
+                                            {{ plan.users }} usuários
+                                        {% else %}
+                                            Usuários ilimitados
+                                        {% endif %}
+                                    </li>
+
+                                    {% if plan.automatic_register %}
+                                        <li><i class="fa fa-check"></i>Marcação automática</li>
+                                    {% else %}
+                                        <li class="disabled"><i class="fa fa-times"></i>Marcação automática</li>
+                                    {% endif %}
+
+                                    {% if plan.dynamic_reminders %}
+                                        <li><i class="fa fa-check"></i>Notificações dinâmicas</li>
+                                    {% else %}
+                                        <li class="disabled"><i class="fa fa-times"></i>Notificações dinâmicas</li>
+                                    {% endif %}
+
+                                    {% if plan.support_all_time %}
+                                        <li><i class="fa fa-check"></i> Suporte 24/7</li>
+                                    {% else %}
+                                        <li class="disabled"><i class="fa fa-times"></i> Suporte 24/7</li>
+                                    {% endif %}
+                                </ul>
+                                <a class="btn btn-theme btn-block" href="#">Assine agora</a>
+                            </div><!--//content-->
+
+                            {% if plan.is_popular %}
+                                <div class="ribbon">
+                                    <div class="text">Popular</div>
+                                </div><!--//ribbon-->
+                            {% endif %}
+
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                {% endfor %}
+
+            </div><!--//items-wrapper-->
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//pricing-->
+
+<!-- ******CONTACT****** -->
+<section id="contact" class="contact section has-pattern">
+    <div class="container">
+        <div class="row text-center">
+            <h2 class="title">Entre em contato</h2>
+            <div class="intro col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
+                <p>Deixe uma mensagem e teremos o prazer de ajudar em tudo.</p>
+                <ul class="list-unstyled contact-details">
+                    <li><i class="fa fa-envelope"></i><a href="mailto:hello@website.com">attila.martins@catracadigital.com.br</a>
+                    </li>
+                    <li><i class="fa fa-phone-square"></i>(19) 98271 3625</li>
+                </ul>
+            </div>
+        </div><!--//row-->
+        <div class="row text-center">
+            <div class="contact-form col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
+                <form class="form">
+                    <div class="form-group name">
+                        <label class="sr-only" for="name">Nome</label>
+                        <input id="name" type="text" class="form-control" placeholder="Nome:">
+                    </div><!--//form-group-->
+                    <div class="form-group email">
+                        <label class="sr-only" for="email">Email</label>
+                        <input id="email" type="email" class="form-control" placeholder="Email:">
+                    </div><!--//form-group-->
+                    <div class="form-group message">
+                        <label class="sr-only" for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" rows="6" placeholder="Mensagem:"></textarea>
+                    </div><!--//form-group-->
+                    <button type="submit" class="btn btn-lg btn-theme">Enviar mensagem</button>
+                </form><!--//form-->
+            </div><!--//contact-form-->
+        </div><!--//row-->
+        <div class="text-center">
+            <ul class="social-icons list-inline">
+                <li><a href="https://www.facebook.com/catracadigitall"><i class="fa fa-facebook"></i></a></li>
+            </ul><!--//social-icons-->
+        </div><!--//row-->
+    </div><!--//container-->
+</section><!--//contact-->
+
+<!-- ******FOOTER****** -->
+<footer class="footer">
+    <div class="container">
+        <small class="copyright pull-left">Todos os direitos reservados &copy; 2016 <a href="#">Heat Soluções
+            Digitais</a></small>
+        <ul class="links list-inline">
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+        </ul>
+    </div>
+</footer><!--//footer-->
+
+<!-- Javascript -->
+<script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/isMobile/isMobile.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/jquery.easing/js/jquery.easing.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/protonet/jquery.inview/jquery.inview.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/jquery.fitvids/jquery.fitvids.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/jquery.scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/jquery-placeholder/jquery.placeholder.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/flexslider/jquery.flexslider-min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lib/matchHeight/dist/jquery.matchHeight-min.js' %}"></script>
+<script type="text/javascript" src="{% static 'landing/js/main.js' %}"></script>
+<!--[if !IE]>-->
+<script type="text/javascript" src="{% static 'landing/js/animations.js' %}"></script>
+<!--<![endif]-->
+</body>
+</html> 
+

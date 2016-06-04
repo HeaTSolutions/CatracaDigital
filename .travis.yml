@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5"
+install:
+  - cp contrib/env-sample .env
+  - pip install -q -r requirements/prod.txt
+script:
+  - python manage.py check
+  - python manage.py migrate
+  - coverage run --source='CatracaDigital' manage.py test
+before_install:
+  - pip install codecov
+after_success:
+  - codecov
