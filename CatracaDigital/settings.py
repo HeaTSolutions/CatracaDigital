@@ -24,6 +24,7 @@ DEFAULT_APPS = [
 THIRD_PARTY_APPS = [
     'django_extensions',
     'test_without_migrations',
+    'djangobower',
 ]
 
 LOCAL_APPS = [
@@ -111,3 +112,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+STATICFILES_FINDER = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+]
+
+BOWER_INSTALLED_APPS = (
+    "animate.css#3.5.1",
+    "bootstrap#3.3.6",
+    "flexslider#2.6.1",
+    "jquery.fitvids#1.1.0",
+    "jquery#2.2.4",
+    "font-awesome#4.6.3",
+    "isMobile#0.4.0",
+    "protonet/jquery.inview#1.1.2",
+    "matchHeight#0.7.0",
+    "jquery-placeholder#2.3.1",
+    "jquery.scrollTo#2.1.2",
+    "jquery.easing#1.3.1",
+)
+
+BOWER_COMPONENTS_ROOT = str(BASE_DIR)
