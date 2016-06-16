@@ -118,6 +118,7 @@ STATICFILES_FINDER = [
     'djangobower.finders.BowerFinder',
 ]
 
+BOWER_COMPONENTS_ROOT = str(BASE_DIR)
 BOWER_INSTALLED_APPS = (
     "animate.css#3.5.1",
     "bootstrap#3.3.6",
@@ -132,5 +133,3 @@ BOWER_INSTALLED_APPS = (
     "jquery.scrollTo#2.1.2",
     "jquery.easing#1.3.1",
 )
-
-BOWER_COMPONENTS_ROOT = str(BASE_DIR)
