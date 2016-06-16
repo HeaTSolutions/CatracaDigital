@@ -1,0 +1,22 @@
+{
+  "name": "catracadigital",
+  "version": "1.0.0",
+  "description": "Solução para controle de ponto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeaTSolutions/CatracaDigital.git"
+  },
+  "author": "Henrique Nogueira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeaTSolutions/CatracaDigital/issues"
+  },
+  "homepage": "https://github.com/HeaTSolutions/CatracaDigital#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}

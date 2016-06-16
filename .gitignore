@@ -67,4 +67,5 @@ target/
 .shortcuts
 .idea/
 .catraca
+node_modules/
 CatracaDigital/core/static/lib
