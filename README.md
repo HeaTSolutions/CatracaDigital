@@ -33,7 +33,6 @@ Gere uma SECRET_KEY e a coloque no .env:
 Instale as dependências necessárias:
 
     pip install -r requirements/dev.txt
-    pip install -r conda_requirements.txt
 
 Lance o servidor Django:
 
