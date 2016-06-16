@@ -1,8 +1,8 @@
 CatracaDigital
 ==============
-[![Build Status](https://travis-ci.org/henriquenogueira/aedes.svg?branch=master)](https://travis-ci.org/henriquenogueira/aedes)
-[![Code Health](https://landscape.io/github/henriquenogueira/aedes/master/landscape.svg?style=flat)](https://landscape.io/github/henriquenogueira/aedes/master)
-[![codecov.io](https://codecov.io/github/henriquenogueira/aedes/coverage.svg?branch=master)](https://codecov.io/github/henriquenogueira/aedes?branch=master)
+[![Build Status](https://travis-ci.org/HeaTSolutions/CatracaDigital.svg?branch=master)](https://travis-ci.org/HeaTSolutions/CatracaDigital)
+[![Code Health](https://landscape.io/github/HeaTSolutions/CatracaDigital/master/landscape.svg?style=flat)](https://landscape.io/github/HeaTSolutions/CatracaDigital/master)
+[![codecov.io](https://codecov.io/github/HeaTSolutions/CatracaDigital/coverage.svg?branch=master)](https://codecov.io/github/HeaTSolutions/CatracaDigital?branch=master)
 
 Solução para controle de ponto.
 
