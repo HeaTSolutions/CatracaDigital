@@ -55,9 +55,9 @@
             </div><!--//navbar-header-->
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="scrollto" href="#">Hoje</a></li>
-                    <li class="nav-item"><a class="scrollto" href="#">Funcionários</a></li>
-                    <li class="nav-item"><a class="scrollto" href="#">Minha empresa</a></li>
+                    <li class="nav-item"><a href="{% url 'core:today' %}">Hoje</a></li>
+                    <li class="nav-item"><a href="{% url 'core:employees' %}">Funcionários</a></li>
+                    <li class="nav-item"><a href="{% url 'core:company' %}">Minha empresa</a></li>
                     <li class="nav-item last"><a href="{% url 'core:logout' %}">Sair</a></li>
                 </ul><!--//nav-->
             </div><!--//navabr-collapse-->

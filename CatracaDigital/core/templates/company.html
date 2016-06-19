@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h3>Dados da empresa</h3>
+        <div class="col-md-6 col-xs-12">
+            {% with request.user.company as company %}
+            <form>
+                <div class="form-group">
+                    <label for="company_name">Nome da empresa</label>
+                    <input type="text" class="form-control" id="company_name" value="{{ company.name }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="company_address">Endereço</label>
+                    <input type="text" class="form-control" id="company_address" value="{{ company.address }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="company_city">Cidade</label>
+                    <input type="text" class="form-control" id="company_city" value="{{ company.city }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="company_state">Estado</label>
+                    <input type="text" class="form-control" id="company_state" value="{{ company.state }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="company_cnpj">CNPJ</label>
+                    <input type="text" class="form-control" id="company_cnpj" value="{{ company.cnpj }}"/>
+                </div>
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
