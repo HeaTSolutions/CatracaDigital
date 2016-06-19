@@ -2,4 +2,65 @@
 
 {% block content %}
 
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <h3>Funcionários</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th class="hidden-xs">PIS</th>
+                <th class="hidden-sm hidden-xs">Data de admissão</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td><b>{{ employee.full_name }}</b></td>
+                    <td class="hidden-xs">{{ employee.pis }}</td>
+                    <td class="hidden-sm hidden-xs">{{ employee.admission_date }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-xs"
+                                data-type="control"
+                                data-url="{% url 'core:create-register' employee.pk %}"
+                                data-alert="Deseja marcar ponto para o funcionário {{ employee.full_name }}?">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>Marcar ponto
+                        </button>
+                        <a type="button" class="btn btn-success btn-xs">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>Relatório
+                        </a>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                data-type="control"
+                                data-url="{% url 'core:remove-employee' employee.pk %}"
+                                data-alert="Deseja remover o funcionário {{ employee.full_name }}?">
+                            <i class="fa fa-times" aria-hidden="true"></i>Remover
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block local_js %}
+    <script>
+        $("button[data-type='control']").click(function () {
+            if (confirm($(this).attr('data-alert'))) {
+                window.location = $(this).attr('data-url');
+            }
+        });
+    </script>
 {% endblock %}

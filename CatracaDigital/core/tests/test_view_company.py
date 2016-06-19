@@ -7,16 +7,14 @@ from ..models import Company
 class CompanyViewTest(TestCase):
     def setUp(self):
         user = User.objects.create_user('user', 'email@domain.com', 'password')
-        Company.objects.create(
-            **{
-                'name': 'My company',
-                'cnpj': '0123456789',
-                'address': '123 John street',
-                'city': 'New York',
-                'state': 'NY',
-                'manager': user
-            }
-        )
+        Company.objects.create(**{
+            'name': 'My company',
+            'cnpj': '0123456789',
+            'address': '123 John street',
+            'city': 'New York',
+            'state': 'NY',
+            'manager': user
+        })
         self.client.login(username='user', password='password')
         self.r = self.client.get(r('core:company'))
 
@@ -48,3 +46,11 @@ class CompanyViewTest(TestCase):
         with self.subTest():
             for exp in expected:
                 self.assertContains(self.r, exp)
+
+    def test_fields_disabled(self):
+        '''Company fields are disabled'''
+        self.assertContains(self.r, 'disabled', 5)
+
+    def test_template_rendered(self):
+        '''Company should render render company.html'''
+        self.assertTemplateUsed(self.r, 'company.html')

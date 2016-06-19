@@ -1,9 +1,13 @@
+from django.contrib import messages
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect, resolve_url as r
+from django.shortcuts import render, redirect, get_object_or_404, resolve_url as r
+from .models import Employee, Register
 
 
+#############################################################################
+# Authentication
 def login(request):
     if request.method == 'GET':
         return render(request, 'login.html', {'form': AuthenticationForm()})
@@ -17,19 +21,51 @@ def login(request):
         return render(request, 'login.html', {'form': form})
 
 
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect(r('landing:index'))
 
 
+#############################################################################
+# Registers
+@login_required
 def today(request):
     return render(request, 'today.html')
 
 
+@login_required
+def create_register(request, employee_pk):
+    employee = get_object_or_404(Employee, pk=employee_pk)
+    register = Register.objects.create(employee=employee, registered_by_manager=True)
+    messages.add_message(request, messages.INFO, 'Horário marcado com sucesso para {} no horário {}!'.format(
+        employee.full_name,
+        register.time.time()
+    ))
+    return redirect(r('core:employees'))
+
+
+#############################################################################
+# Employees
+@login_required
 def employees(request):
-    return render(request, 'employees.html')
+    # Getting list of employees
+    employees = request.user.company.employees.all().order_by('first_name', 'last_name')
+    return render(request, 'employees.html', {'employees': employees})
 
 
+@login_required
+def remove_employee(request, employee_pk):
+    employee = get_object_or_404(Employee, pk=employee_pk)
+    employee.delete()
+    messages.add_message(request, messages.INFO, 'Funcionário {} removido com sucesso.'.format(
+        employee.full_name
+    ))
+    return redirect(r('core:employees'))
+
+
+#############################################################################
+# Companies
 @login_required
 def company(request):
     return render(request, 'company.html')

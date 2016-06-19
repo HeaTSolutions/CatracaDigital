@@ -73,8 +73,8 @@
 <!-- Javascript -->
 <script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<!--[if !IE]>-->
-<script type="text/javascript" src="{% static 'landing/js/animations.js' %}"></script>
-<!--<![endif]-->
+
+{% block local_js %}
+{% endblock %}
 </body>
 </html>

@@ -8,23 +8,23 @@
             <form>
                 <div class="form-group">
                     <label for="company_name">Nome da empresa</label>
-                    <input type="text" class="form-control" id="company_name" value="{{ company.name }}"/>
+                    <input type="text" class="form-control" id="company_name" value="{{ company.name }}" disabled />
                 </div>
                 <div class="form-group">
                     <label for="company_address">Endereço</label>
-                    <input type="text" class="form-control" id="company_address" value="{{ company.address }}"/>
+                    <input type="text" class="form-control" id="company_address" value="{{ company.address }}" disabled />
                 </div>
                 <div class="form-group">
                     <label for="company_city">Cidade</label>
-                    <input type="text" class="form-control" id="company_city" value="{{ company.city }}"/>
+                    <input type="text" class="form-control" id="company_city" value="{{ company.city }}" disabled />
                 </div>
                 <div class="form-group">
                     <label for="company_state">Estado</label>
-                    <input type="text" class="form-control" id="company_state" value="{{ company.state }}"/>
+                    <input type="text" class="form-control" id="company_state" value="{{ company.state }}" disabled />
                 </div>
                 <div class="form-group">
                     <label for="company_cnpj">CNPJ</label>
-                    <input type="text" class="form-control" id="company_cnpj" value="{{ company.cnpj }}"/>
+                    <input type="text" class="form-control" id="company_cnpj" value="{{ company.cnpj }}" disabled />
                 </div>
                 {% endwith %}
             </form>
