@@ -8,7 +8,26 @@ from ..models import Company, Employee
 
 class EmployeesViewTest(TestCase):
     def setUp(self):
+        user = User.objects.create_user('user', 'email@domain.com', 'password')
+        company = Company.objects.create(**{
+            'name': 'My company',
+            'cnpj': '0123456789',
+            'address': '123 John street',
+            'city': 'New York',
+            'state': 'NY',
+            'manager': user
+        })
 
+        self.employee = Employee.objects.create(**{
+            'first_name': 'Henrique',
+            'last_name': 'Nogueira',
+            'pis': '01234',
+            'admission_date': datetime.today(),
+            'mobile_id': '#123',
+            'company': company
+        })
+
+        self.client.login(username='user', password='password')
         self.r = self.client.get(r('core:employees'))
 
     def test_context(self):
