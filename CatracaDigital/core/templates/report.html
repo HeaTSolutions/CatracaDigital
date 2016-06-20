@@ -1,0 +1,51 @@
+<h3>Registros de ponto do mês <b>{% now 'F' %}/{% now 'Y' %}</b></h3>
+
+<b>Nome do funcionário:</b> {{ employee.full_name }} <br/>
+<b>PIS:</b> {{ employee.pis }} <br/>
+<b>Data de admissão:</b> {{ employee.admission_date }} <br/>
+
+<br/><br/>
+
+<table>
+    <thead>
+    <tr>
+        <th style="width: 150px; text-align: left">Dia do mês</th>
+        <th style="width: 600px; text-align: left">Horários</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for day in employee.grouped_month_registers %}
+        <tr>
+            <td>{{ day.date }}</td>
+            <td>
+                {% spaceless %}
+                    {% for entry in day.entries %}
+                        {{ entry.time|date:"H:i:s" }}{% if entry.registered_by_manager %}*{% endif %}
+                        {% if not forloop.last %}
+                            ,&nbsp;
+                        {% endif %}
+                    {% endfor %}
+                {% endspaceless %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br>
+(*) Ponto marcado pelo gestor.
+
+<br/><br/><br/>
+
+<p>
+    {{ company.city }} - {{ company.state }}, {% now 'd' %} de {% now 'F' %} de {% now 'Y' %}.
+</p>
+
+<br/><br/>
+
+<table>
+    <tr style="text-align: center;">
+        <td>--------------------------------------------<br>{{ employee.full_name }}</td>
+        <td>--------------------------------------------<br>Empregador</td>
+    </tr>
+</table>

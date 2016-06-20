@@ -26,17 +26,30 @@ class Employee(models.Model):
     def full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
 
-    @property
-    def today_registers(self):
-        return self.registers.filter(time__date=date.today())
+    def registers_for_month(self, month, year):
+        return self.registers.filter(time__month=month, time__year=year)
+
+    def registers_for_day(self, d, m, y):
+        return self.registers.filter(time__day=d, time__month=m, time__year=y).order_by('time')
 
     @property
-    def month_registers(self):
-        return self.registers.filter(time__month=date.today().month, time__year=date.today().year)
+    def today_registers(self):
+        return self.registers_for_day(date.today().day, date.today().month, date.today().year)
+
+    @property
+    def current_month_registers(self):
+        return self.registers_for_month(date.today().month, date.today().year)
 
     @property
     def grouped_month_registers(self):
-        registers = sorted(self.month_registers, key=lambda e: e.time)
+        return self._group_registers(self.month_registers)
+
+    def grouped_registers(self, year, month):
+        registers = self.registers.filter(time__month=month, time__year=year)
+        return self._group_registers(registers)
+
+    def _group_registers(self, registers):
+        registers = sorted(registers, key=lambda e: e.time)
         registers = groupby(registers, key=lambda e: e.time.date())
 
         result = []
