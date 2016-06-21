@@ -3,6 +3,7 @@ from itertools import groupby
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone as tz
 
 
 class Employee(models.Model):
@@ -25,6 +26,10 @@ class Employee(models.Model):
     @property
     def full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    @property
+    def months(self):
+        return self.registers.datetimes('time', 'month', order='DESC')
 
     def registers_for_month(self, month, year):
         return self.registers.filter(time__month=month, time__year=year)
@@ -50,7 +55,7 @@ class Employee(models.Model):
 
     def _group_registers(self, registers):
         registers = sorted(registers, key=lambda e: e.time)
-        registers = groupby(registers, key=lambda e: e.time.date())
+        registers = groupby(registers, key=lambda e: tz.localtime(e.time).date())
 
         result = []
         for r, e in registers:

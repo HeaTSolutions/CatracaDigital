@@ -123,7 +123,7 @@ textarea,
 select {
   appearance: none;
   /* for mobile safari */
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;*/
 }
 ::-webkit-input-placeholder {
   /* WebKit browsers */

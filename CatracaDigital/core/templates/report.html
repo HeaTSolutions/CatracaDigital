@@ -1,8 +1,12 @@
+{% load tz %}
+
+{% localtime on %}
+
 <h3>Registros de ponto do mês <b>{% now 'F' %}/{% now 'Y' %}</b></h3>
 
 <b>Nome do funcionário:</b> {{ employee.full_name }} <br/>
-<b>PIS:</b> {{ employee.pis }} <br/>
 <b>Data de admissão:</b> {{ employee.admission_date }} <br/>
+<b>PIS:</b> {{ employee.pis }} <br/>
 
 <br/><br/>
 
@@ -14,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    {% for day in employee.grouped_month_registers %}
+    {% for day in registers %}
         <tr>
             <td>{{ day.date }}</td>
             <td>
@@ -38,7 +42,7 @@
 <br/><br/><br/>
 
 <p>
-    {{ company.city }} - {{ company.state }}, {% now 'd' %} de {% now 'F' %} de {% now 'Y' %}.
+    {{ employee.company.city }} - {{ employee.company.state }}, {% now 'd F Y' %}.
 </p>
 
 <br/><br/>
@@ -49,3 +53,5 @@
         <td>--------------------------------------------<br>Empregador</td>
     </tr>
 </table>
+
+{% endlocaltime %}

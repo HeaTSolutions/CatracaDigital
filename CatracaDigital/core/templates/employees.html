@@ -38,9 +38,11 @@
                                 data-alert="Deseja marcar ponto para o funcionário {{ employee.full_name }}?">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>Marcar ponto
                         </button>
-                        <a type="button" class="btn btn-success btn-xs">
+                        <button type="button" class="btn btn-success btn-xs"
+                                data-toggle="modal" data-target="#reportModal"
+                                data-source="{% url 'core:report' employee.pk %}">
                             <i class="fa fa-file-excel-o" aria-hidden="true"></i>Relatório
-                        </a>
+                        </button>
                         <button type="button" class="btn btn-danger btn-xs"
                                 data-type="control"
                                 data-url="{% url 'core:remove-employee' employee.pk %}"
@@ -53,6 +55,27 @@
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Selecionar período de relatório</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Carregando...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary submit">Gerar relatório</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 {% endblock %}
 
 {% block local_js %}
@@ -61,6 +84,16 @@
             if (confirm($(this).attr('data-alert'))) {
                 window.location = $(this).attr('data-url');
             }
+        });
+
+        $("button[data-target='#reportModal']").click(function() {
+           $.get($(this).attr('data-source'), function(response) {
+               $("#reportModal .modal-body").html(response);
+           })
+        });
+
+        $("button.submit").click(function() {
+            $("#reportModal form").submit();
         });
     </script>
 {% endblock %}

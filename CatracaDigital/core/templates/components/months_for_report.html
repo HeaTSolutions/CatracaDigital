@@ -1,0 +1,8 @@
+<form method="post" action="{% url 'core:report' employee.pk %}">
+    {% csrf_token %}
+    <select name="month" class="form-control">
+        {% for month in months %}
+            <option value="{{ month|date:"m-Y" }}">{{ month|date:"F/Y" }}</option>
+        {% endfor %}
+    </select>
+</form>

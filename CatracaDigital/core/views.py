@@ -38,11 +38,27 @@ def today(request):
 def create_register(request, employee_pk):
     employee = get_object_or_404(Employee, pk=employee_pk)
     register = Register.objects.create(employee=employee, registered_by_manager=True)
-    messages.add_message(request, messages.INFO, 'Horário marcado com sucesso para {} no horário {}!'.format(
+    messages.add_message(request, messages.INFO, 'Horário marcado com sucesso para {} no horário {}'.format(
         employee.full_name,
         register.time.time()
     ))
     return redirect(r('core:employees'))
+
+
+@login_required
+def report(request, employee_pk):
+    employee = get_object_or_404(Employee, pk=employee_pk)
+    if request.method == 'GET':
+        return render(request, 'components/months_for_report.html', {
+            'months': employee.months,
+            'employee': employee
+        })
+    elif request.method == 'POST':
+        month, year = (int(x) for x in request.POST['month'].split('-'))
+        return render(request, 'report.html', {
+            'registers': employee.grouped_registers(year, month),
+            'employee': employee
+        })
 
 
 #############################################################################
