@@ -54,14 +54,9 @@ class Employee(models.Model):
         return self._group_registers(registers)
 
     def _group_registers(self, registers):
-        registers = sorted(registers, key=lambda e: e.time)
+        registers = sorted(registers, key=lambda e: tz.localtime(e.time).date())
         registers = groupby(registers, key=lambda e: tz.localtime(e.time).date())
-
-        result = []
-        for r, e in registers:
-            result.append({'date': r, 'entries': list(e)})
-
-        return result
+        return [{'date': r, 'entries': list(e)} for r, e in registers]
 
     def __str__(self):
         return '[{}] {} {}'.format(self.mobile_id, self.first_name, self.last_name)

@@ -3,9 +3,11 @@
 {% block content %}
     <div class="container">
         <h3>{{ employee.full_name }}</h3>
-        <h4><b>Data de admissão</b> {{ employee.admission_date }}</h4>
+        <h4><b>Admissão</b> {{ employee.admission_date }}</h4>
         <h4><b>PIS</b> {{ employee.pis }}</h4>
+        <hr/>
 
+        <h4>Seleção de período</h4>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6">
                {% include 'components/months_for_report.html' with employee=employee months=employee.months %}

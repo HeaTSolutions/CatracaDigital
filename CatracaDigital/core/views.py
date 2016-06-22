@@ -3,7 +3,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404, resolve_url as r
-from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone as tz
 from .models import Employee, Register
 
 
@@ -41,7 +41,7 @@ def create_register(request, employee_pk):
     register = Register.objects.create(employee=employee, registered_by_manager=True)
     messages.add_message(request, messages.INFO, 'Horário marcado com sucesso para {} no horário {}'.format(
         employee.full_name,
-        register.time.time()
+        tz.localtime(register.time).time().strftime('%H:%M')
     ))
     return redirect(r('core:employees'))
 
