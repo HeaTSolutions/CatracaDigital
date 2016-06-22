@@ -91,6 +91,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/core/login'
+
 ########################################################################
 # Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

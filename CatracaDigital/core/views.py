@@ -36,6 +36,12 @@ def today(request):
 
 
 @login_required
+def register(request, register_pk):
+    register = get_object_or_404(Register, pk=register_pk)
+    return render(request, 'register.html', {'register': register})
+
+
+@login_required
 def create_register(request, employee_pk):
     employee = get_object_or_404(Employee, pk=employee_pk)
     register = Register.objects.create(employee=employee, registered_by_manager=True)

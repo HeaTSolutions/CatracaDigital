@@ -12,7 +12,11 @@
             <td>{{ register.date }}</td>
             <td>
                 {% for entry in register.entries %}
-                    <span class="label label-primary">{{ entry.time|date:"H:i:s" }}</span>
+                    <a href="{% url 'core:register' entry.pk %}">
+                        <span class="label label-primary" style="margin-left: 5px;">
+                            {{ entry.time|date:"H:i:s" }}
+                        </span>
+                    </a>
                 {% endfor %}
             </td>
         </tr>
