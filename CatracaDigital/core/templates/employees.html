@@ -28,7 +28,7 @@
             <tbody>
             {% for employee in employees %}
                 <tr>
-                    <td><b>{{ employee.full_name }}</b></td>
+                    <td><b><a href="{% url 'core:employee' employee.pk %}">{{ employee.full_name }}</a></b></td>
                     <td class="hidden-xs">{{ employee.pis }}</td>
                     <td class="hidden-sm hidden-xs">{{ employee.admission_date }}</td>
                     <td>

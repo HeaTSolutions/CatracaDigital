@@ -3,6 +3,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404, resolve_url as r
+from django.views.decorators.csrf import csrf_exempt
 from .models import Employee, Register
 
 
@@ -54,20 +55,29 @@ def report(request, employee_pk):
             'employee': employee
         })
     elif request.method == 'POST':
-        month, year = (int(x) for x in request.POST['month'].split('-'))
-        return render(request, 'report.html', {
-            'registers': employee.grouped_registers(year, month),
-            'employee': employee
-        })
+        return _timetable_for_employee(request, employee, 'report.html')
 
 
 #############################################################################
 # Employees
+
+@login_required
+def timetable(request, employee_pk):
+    employee = get_object_or_404(Employee, pk=employee_pk)
+    return _timetable_for_employee(request, employee, 'components/timetable.html')
+
+
 @login_required
 def employees(request):
     # Getting list of employees
     employees = request.user.company.employees.all().order_by('first_name', 'last_name')
     return render(request, 'employees.html', {'employees': employees})
+
+
+@login_required
+def employee(request, employee_pk):
+    employee = get_object_or_404(Employee, pk=employee_pk)
+    return render(request, 'employee.html', {'employee': employee})
 
 
 @login_required
@@ -85,3 +95,13 @@ def remove_employee(request, employee_pk):
 @login_required
 def company(request):
     return render(request, 'company.html')
+
+
+#############################################################################
+# Auxiliary methods
+def _timetable_for_employee(request, employee, template):
+    month, year = (int(x) for x in request.POST['month'].split('-'))
+    return render(request, template, {
+        'registers': employee.grouped_registers(year, month),
+        'employee': employee
+    })

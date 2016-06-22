@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.today, name='today'),
+    url(r'^employee/(?P<employee_pk>.+)$', views.employee, name='employee'),
+    url(r'^timetable/(?P<employee_pk>.+)$', views.timetable, name='timetable'),
     url(r'^employees$', views.employees, name='employees'),
     url(r'^create_register/(?P<employee_pk>.+)$', views.create_register, name='create-register'),
     url(r'^remove_employee/(?P<employee_pk>.+)$', views.remove_employee, name='remove-employee'),

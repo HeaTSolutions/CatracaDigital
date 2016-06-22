@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h3>{{ employee.full_name }}</h3>
+        <h4><b>Data de admissão</b> {{ employee.admission_date }}</h4>
+        <h4><b>PIS</b> {{ employee.pis }}</h4>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+               {% include 'components/months_for_report.html' with employee=employee months=employee.months %}
+            </div>
+        </div>
+
+        <div id="timetable"></div>
+
+    </div>
+{% endblock %}
+
+{% block local_js %}
+    <script>
+        function updateTimeTable() {
+            console.log($('form').serialize());
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'core:timetable' employee.pk %}',
+                data: $('form').serialize(),
+                success: function (response) {
+                    $("#timetable").html(response);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            updateTimeTable();
+        })
+
+        $("form select").change(function () {
+            updateTimeTable();
+        });
+    </script>
+{% endblock %}

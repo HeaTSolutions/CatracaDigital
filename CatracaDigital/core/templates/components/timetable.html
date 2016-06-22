@@ -1,0 +1,21 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Data</th>
+        <th>Marcações</th>
+    </tr>
+    </thead>
+    {% for register in registers %}
+        <tr>
+            <td>{{ register.date }}</td>
+            <td>
+                {% for entry in register.entries %}
+                    <span class="label label-primary">{{ entry.time.time }}</span>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    <tbody>
+
+    </tbody>
+</table>
