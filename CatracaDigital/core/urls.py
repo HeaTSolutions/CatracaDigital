@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.today, name='today'),
     url(r'^employee/(?P<employee_pk>.+)$', views.employee, name='employee'),
+    url(r'^create_employee$', views.create_employee, name='create-employee'),
     url(r'^timetable/(?P<employee_pk>.+)$', views.timetable, name='timetable'),
     url(r'^register/(?P<register_pk>.+)$', views.register, name='register'),
     url(r'^employees$', views.employees, name='employees'),

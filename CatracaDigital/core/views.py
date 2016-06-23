@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404, resolve_url as r
 from django.utils import timezone as tz
+from .forms import EmployeeForm
 from .models import Employee, Register
 
 
@@ -84,6 +85,21 @@ def employees(request):
 def employee(request, employee_pk):
     employee = get_object_or_404(Employee, pk=employee_pk)
     return render(request, 'employee.html', {'employee': employee})
+
+
+@login_required
+def create_employee(request):
+    if request.method == 'GET':
+        employee = EmployeeForm(initial={'company': request.user.company.pk})
+        return render(request, 'add_employee.html', {'form': employee})
+    elif request.method == 'POST':
+        employee = EmployeeForm(request.POST)
+        if employee.is_valid():
+            employee.save()
+            messages.add_message(request, messages.INFO, 'Funcionário adicionado com sucesso!')
+            return redirect(r('core:employees'))
+        return render(request, 'add_employee.html', {'form': employee})
+
 
 
 @login_required

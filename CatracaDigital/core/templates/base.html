@@ -26,6 +26,8 @@
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
     <link id="theme-style" rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block local_css %}{% endblock %}
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

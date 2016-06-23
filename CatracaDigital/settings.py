@@ -109,6 +109,7 @@ TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+DATE_INPUT_FORMATS = '%d/%m/%Y',
 
 ########################################################################
 # Static files (CSS, JavaScript, Images)
@@ -134,4 +135,5 @@ BOWER_INSTALLED_APPS = (
     "jquery-placeholder#2.3.1",
     "jquery.scrollTo#2.1.2",
     "jquery.easing#1.3.1",
+    "eonasdan-bootstrap-datetimepicker#latest"
 )

@@ -15,7 +15,9 @@
     </div>
 
     <div class="container">
-        <h3>Funcionários</h3>
+        <div class="row">
+            <h3>Funcionários<a href="{% url 'core:create-employee' %}" class="btn btn-primary btn-sm pull-right">Adicionar funcionário</a></h3>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -86,13 +88,13 @@
             }
         });
 
-        $("button[data-target='#reportModal']").click(function() {
-           $.get($(this).attr('data-source'), function(response) {
-               $("#reportModal .modal-body").html(response);
-           })
+        $("button[data-target='#reportModal']").click(function () {
+            $.get($(this).attr('data-source'), function (response) {
+                $("#reportModal .modal-body").html(response);
+            })
         });
 
-        $("button.submit").click(function() {
+        $("button.submit").click(function () {
             $("#reportModal form").submit();
         });
     </script>

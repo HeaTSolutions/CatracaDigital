@@ -31,23 +31,8 @@ class Employee(models.Model):
     def months(self):
         return self.registers.datetimes('time', 'month', order='DESC')
 
-    def registers_for_month(self, month, year):
-        return self.registers.filter(time__month=month, time__year=year)
-
     def registers_for_day(self, d, m, y):
         return self.registers.filter(time__day=d, time__month=m, time__year=y).order_by('time')
-
-    @property
-    def today_registers(self):
-        return self.registers_for_day(date.today().day, date.today().month, date.today().year)
-
-    @property
-    def current_month_registers(self):
-        return self.registers_for_month(date.today().month, date.today().year)
-
-    @property
-    def grouped_month_registers(self):
-        return self._group_registers(self.month_registers)
 
     def grouped_registers(self, year, month):
         registers = self.registers.filter(time__month=month, time__year=year)
