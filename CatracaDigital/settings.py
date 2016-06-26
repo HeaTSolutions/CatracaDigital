@@ -25,12 +25,14 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'test_without_migrations',
     'djangobower',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
     'CatracaDigital.core.apps.CoreConfig',
     'CatracaDigital.landing.apps.LandingConfig',
     'CatracaDigital.payment.apps.PaymentConfig',
+    'CatracaDigital.api.apps.ApiConfig',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
