@@ -38,6 +38,10 @@ Adicione as dependências de CSS no projeto:
 
     python manage.py bower install
 
+Crie um usuário admin para ter acesso:
+
+    python manage.py createsuperuser
+
 Lance o servidor Django:
 
     python manage.py runserver
