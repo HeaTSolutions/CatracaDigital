@@ -34,6 +34,10 @@ Migre as atualizações para o banco de dados:
 
     python manage.py migrate
 
+Adicione as dependências de CSS no projeto:
+
+    python manage.py bower install
+
 Lance o servidor Django:
 
     python manage.py runserver
