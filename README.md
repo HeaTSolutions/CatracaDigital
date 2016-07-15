@@ -26,13 +26,13 @@ Copie o arquivo contrib/env-sample para o root do projeto com o nome .env:
 
     cp contrib/env-sample .env
 
-Gere uma SECRET_KEY e a coloque no .env:
-
-    SECRET=$(python contrib/gen_secret.py)
-
 Instale as dependências necessárias:
 
     pip install -r requirements/dev.txt
+
+Migre as atualizações para o banco de dados:
+
+    python manage.py migrate
 
 Lance o servidor Django:
 
