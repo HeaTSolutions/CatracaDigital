@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
@@ -39,7 +40,10 @@ def today(request):
 @login_required
 def register(request, register_pk):
     register = get_object_or_404(Register, pk=register_pk)
-    return render(request, 'register.html', {'register': register})
+    return render(request, 'register.html', {
+        'register': register,
+        'google_api_key': settings.GOOGLE_API_KEY
+    })
 
 
 @login_required

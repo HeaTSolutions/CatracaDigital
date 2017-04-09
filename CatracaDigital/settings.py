@@ -139,3 +139,7 @@ BOWER_INSTALLED_APPS = (
     "jquery.easing#1.3.1",
     "eonasdan-bootstrap-datetimepicker#latest"
 )
+
+########################################################################
+# API Credentials
+GOOGLE_API_KEY = config("GOOGLE_API_KEY")

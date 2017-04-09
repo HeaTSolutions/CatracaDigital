@@ -64,6 +64,7 @@ target/
 .ipynb_checkpoints/
 .python-version
 .env
+.venv/
 .shortcuts
 .idea/
 .catraca

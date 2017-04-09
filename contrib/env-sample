@@ -1,6 +1,7 @@
 SECRET_KEY=THIS_IS_NOT_A_GOOD_SECRET
 DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,.localhost,.herokuapp.com
+GOOGLE_API_KEY=AIzaSyDNp4Pm5whoZxFpY-QjSbgtwEbBn1hBB9U
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 EMAIL_HOST=localhost
 EMAIL_PORT=25
